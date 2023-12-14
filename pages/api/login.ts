@@ -1,9 +1,11 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from 'next';
+import {conectarMongoDB} from '../../middlewares/conectarMongoDB';
+import type {RespostaPadraoMsg} from '../../types/RespostaPadraoMsg';
 
-export default (
+const endpointLogin = (
     req: NextApiRequest,
-    res: NextApiResponse
+    res: NextApiResponse<RespostaPadraoMsg>
     //Criação de função na linha 8
 ) => {
     //Tratativas de métodos
@@ -17,3 +19,7 @@ export default (
     }
     return res.status(405).json({erro: 'O metodo informado não é valido'}); //Vai retornar o método 405 (solicitação de algo que não está permitido) se usarem outro método diferente de POST
 }
+
+/*Essa linha faz com que quando o if for chamado, ele primeiro
+vai tentar se conectar ao banco de dados e depois executar o endpoint (if)*/ 
+export default conectarMongoDB(endpointLogin);
