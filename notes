@@ -1,6 +1,6 @@
 - Sempre que eu precisar fazer uma consulta no banco de dados a variável
 precisa receber o 'async'. Porque tudo que vem do banco, não sabemos quanto
-tempo vai demorar para retornar.
+tempo vai demorar para retornar
 
 - A pasta 'types' são os padrões que vamos usar de TypeScript vão ficar e o models é onde colocamos os schemas do banco
 
