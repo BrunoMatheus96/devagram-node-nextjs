@@ -1,0 +1,20 @@
+- Sempre que eu precisar fazer uma consulta no banco de dados a variável
+precisa receber o 'async'. Porque tudo que vem do banco, não sabemos quanto
+tempo vai demorar para retornar.
+
+- A pasta 'types' são os padrões que vamos usar de TypeScript vão ficar e o models é onde colocamos os schemas do banco
+
+- O md5 é responsável pela criptografia das informações. Então sempre que 
+quisermos criptografar uma informação, precisamos add o md5 na variável. 
+exemplos encontrados no cadastro.td e no login.ts.
+    - Para instalar o md5 precisa usar os comandos:
+        - npm i md5
+        - npm install --save-dev @types/md5
+
+- Para instalação do JWT (token), precisamos usar os comandos:
+    - npm i jsonwebtoken
+    - npm i --save-dev @types/jsonwebtoken
+
+- Para conectar com banco e criar o Token precisamos ter dois arquivos que são:
+    - .env.example
+    - .env.local -> Esse não sobe para o GIT
