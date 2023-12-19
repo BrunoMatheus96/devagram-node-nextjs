@@ -39,7 +39,7 @@ const handler = nc() // Utilizando o nc do Next Connect que serve para "gerencia
 
             } catch (e) {
                 console.log(e);
-                return res.status(400).json({ erro: 'Não foi possível atualizar o usuário' + e });
+                return res.status(400).json({ erro: 'Não foi possível atualizar o usuário ' + e });
             }
 
         }).get( // Utiliza o método GET do NC para obter dados do usuário

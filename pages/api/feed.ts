@@ -7,7 +7,7 @@ import { UsuarioModel } from "@/models/UsuarioModel"; // Importando o model do U
 import { PublicacaoModel } from "@/models/PublicacaoModel"; // Importando o model da Publicação
 //import { SeguidorModel } from "@/models/SeguidorModel"; // Importando o model do Seguidor
 
-
+//Feed do usuário
 const feedEndPoint = async (
     req: NextApiRequest,
     res: NextApiResponse<RespostaPadraoMsg | any>
