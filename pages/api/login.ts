@@ -35,7 +35,7 @@ const endpointLogin = async (
 
             //Criação do token de segurança na aplicação
             const token = jwt.sign({ _id: usuarioEncotrado._id }, MINHA_CHAVE_JWT);
-            res.status(200).json({
+            return res.status(200).json({
                 nome: usuarioEncotrado.nome,
                 email: usuarioEncotrado.email,
                 token
