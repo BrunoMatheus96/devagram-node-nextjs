@@ -1,7 +1,7 @@
 import type { NextApiResponse } from "next"; // Request, Response e Handler padrão do Next
 import { validarTokenJWT } from "@/middlewares/validarTokenJWT"; // Importando o middleware de validação do token JWT criado
 import { conectarMongoDB } from "@/middlewares/conectarMongoDB"; // Importando o middleware de conexão com DB que foi criado
-//import { politicaCORS } from "@/middlewares/politicaCORS"; // Importando o middleware de CORS que criamos
+import { politicaCORS } from "@/middlewares/politicaCORS"; // Importando o middleware de CORS que criamos
 import type { RespostaPadraoMsg } from "@/types/RespostaPadraoMsg"; // Importando o tipo de resposta padrão que criamos
 import nc from "next-connect"; // Importando o Next Connect para facilitar a conexão HTTP
 import { PublicacaoModel } from "@/models/PublicacaoModel"; // Importando o model da Publicação
@@ -61,4 +61,4 @@ export const config = {  // Passa uma configuração para o NEXT não transforma
     }
 };
 
-export default validarTokenJWT(conectarMongoDB(handler)); // Exporta o manipulador criado passando por todos os middlewares necessários
+export default politicaCORS(validarTokenJWT(conectarMongoDB(handler))); // Exporta o manipulador criado passando por todos os middlewares necessários

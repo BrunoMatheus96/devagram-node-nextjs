@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next"; // Request, Response e Handler padrão do Next
-//import { politicaCORS } from "@/middlewares/politicaCORS"; // Importando o middleware de CORS que criamos
+import { politicaCORS } from "@/middlewares/politicaCORS"; // Importando o middleware de CORS que criamos
 import { validarTokenJWT } from "@/middlewares/validarTokenJWT"; // Importando o middleware de validação do token JWT criado
 import { conectarMongoDB } from "@/middlewares/conectarMongoDB"; // Importando o middleware de conexão com DB que foi criado
 import type { RespostaPadraoMsg } from "@/types/RespostaPadraoMsg"; // Importando o tipo de resposta padrão que criamos
@@ -43,4 +43,4 @@ const pesquisaEndpoint = async (req: NextApiRequest, res: NextApiResponse<Respos
 }
 
 
-export default (validarTokenJWT(conectarMongoDB(pesquisaEndpoint))); // Exporta o endpoint de pesquisa passando pelos middlewares necessários
+export default politicaCORS(validarTokenJWT(conectarMongoDB(pesquisaEndpoint))); // Exporta o endpoint de pesquisa passando pelos middlewares necessários

@@ -4,7 +4,7 @@ import { json } from "stream/consumers";
 import type { RespostaPadraoMsg } from "@/types/RespostaPadraoMsg"; // Importando o tipo de resposta padrão que criamos
 import { validarTokenJWT } from "@/middlewares/validarTokenJWT"; // Importando o middleware de validação do token JWT criado
 import { conectarMongoDB } from "@/middlewares/conectarMongoDB"; // Importando o middleware de conexão com DB que foi criado
-//import { politicaCORS } from "@/middlewares/politicaCORS"; // Importando o middleware de CORS que criamos
+import { politicaCORS } from "@/middlewares/politicaCORS"; // Importando o middleware de CORS que criamos
 import { PublicacaoModel } from "@/models/PublicacaoModel"; // Importando o model da Publicação
 import { UsuarioModel } from "../../models/UsuarioModel"; // Importando o model do Usuário
 import { SeguidorModel } from "@/models/SeguidorModel"; // Importando o model do Seguidor
@@ -101,4 +101,4 @@ const endpointSeguir = async (
     }
 };
 
-export default (validarTokenJWT(conectarMongoDB(endpointSeguir))); // Exporta o endpoint de seguir passando pelos middlewares necessários
+export default politicaCORS(validarTokenJWT(conectarMongoDB(endpointSeguir))); // Exporta o endpoint de seguir passando pelos middlewares necessários

@@ -6,7 +6,7 @@ import { PublicacaoModel } from "@/models/PublicacaoModel"; // Importando o mode
 import { SeguidorModel } from "@/models/SeguidorModel"; // Importando o model do Seguidor
 import { validarTokenJWT } from "@/middlewares/validarTokenJWT"; // Importando o middleware de validação do token JWT criado
 import { conectarMongoDB } from "@/middlewares/conectarMongoDB"; // Importando o middleware de conexão com DB que foi criado
-//import { politicaCORS } from "@/middlewares/politicaCORS"; // Importando o middleware de CORS que criamos
+import { politicaCORS } from "@/middlewares/politicaCORS"; // Importando o middleware de CORS que criamos
 //import { NotificacaoModel } from "@/models/NotificacaoModel";
 
 const cometarioEndpoint = async (req: NextApiRequest, res: NextApiResponse<RespostaPadraoMsg>) => {
@@ -71,4 +71,4 @@ const cometarioEndpoint = async (req: NextApiRequest, res: NextApiResponse<Respo
         return res.status(500).json({ erro: "Ocorreu um erro ao comentar a publicação" });
     }
 }
-export default (validarTokenJWT(conectarMongoDB(cometarioEndpoint))); // Exporta o endpoint de comentário passando pelos middlewares necessários
+export default politicaCORS(validarTokenJWT(conectarMongoDB(cometarioEndpoint))); // Exporta o endpoint de comentário passando pelos middlewares necessários

@@ -6,6 +6,7 @@ import type {LoginResposta} from '../../types/LoginResposta';
 import md5 from 'md5';
 import { UsuarioModel } from '../../models/UsuarioModel';
 import jwt from 'jsonwebtoken';
+import { politicaCORS } from "@/middlewares/politicaCORS"; // Importando o middleware de CORS que criamos
 
 const endpointLogin = async (
     req: NextApiRequest,
@@ -47,4 +48,4 @@ const endpointLogin = async (
 
 /*Essa linha faz com que quando o if for chamado, ele primeiro
 vai tentar se conectar ao banco de dados e depois executar o endpoint (if)*/
-export default conectarMongoDB(endpointLogin);
+export default politicaCORS(conectarMongoDB(endpointLogin));

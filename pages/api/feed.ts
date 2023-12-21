@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next"; // Request, Response e Handler padrão do Next
 import { validarTokenJWT } from "@/middlewares/validarTokenJWT"; // Importando o middleware de validação do token JWT criado
 import { conectarMongoDB } from "@/middlewares/conectarMongoDB"; // Importando o middleware de conexão com DB que foi criado
-//import { politicaCORS } from "@/middlewares/politicaCORS"; // Importando o middleware de CORS que criamos
+import { politicaCORS } from "@/middlewares/politicaCORS"; // Importando o middleware de CORS que criamos
 import type { RespostaPadraoMsg } from "@/types/RespostaPadraoMsg"; // Importando o tipo de resposta padrão que criamos
 import { UsuarioModel } from "@/models/UsuarioModel"; // Importando o model do Usuário
 import { PublicacaoModel } from "@/models/PublicacaoModel"; // Importando o model da Publicação
@@ -103,4 +103,4 @@ const feedEndPoint = async (
   return res.status(400).json({ erro: "Não foi possível obter o feed" });
 };
 
-export default (validarTokenJWT(conectarMongoDB(feedEndPoint))); // Exporta o endpoint de feed passando pelos middlewares necessários
+export default politicaCORS(validarTokenJWT(conectarMongoDB(feedEndPoint))); // Exporta o endpoint de feed passando pelos middlewares necessários
