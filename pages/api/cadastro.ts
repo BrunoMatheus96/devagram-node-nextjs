@@ -4,7 +4,7 @@ import md5 from "md5"; // Importando uma biblioteca de cripitografia simples par
 import type { RespostaPadraoMsg } from "../../types/RespostaPadraoMsg"; // Importando o tipo de resposta padrão que criamos
 import type { CadastroRequisicao } from "../../types/CadastroRequisicao"; // Importando o tipo de requisição de cadastro padrão que criamos
 import { conectarMongoDB } from "../../middlewares/conectarMongoDB"; // Importando o middleware de conexão com DB que foi criado
-//import { politicaCORS } from "@/middlewares/politicaCORS"; // Importando o middleware de CORS que criamos
+import { politicaCORS } from "@/middlewares/politicaCORS"; // Importando o middleware de CORS que criamos
 import { UsuarioModel } from "../../models/UsuarioModel"; // Importando o model do Usuário
 import { upload, uploadImagemCosmic } from "../../service/uploadImagemCosmic"; // Importando as funções que criamos para utilização do Cosmic e Mutler
 
@@ -78,4 +78,4 @@ export const config = { // Configurando para que o NEXT não mande uma request c
         bodyParser: false,
     },
 }; 
-export default conectarMongoDB(handler); // Export o handler criado passando os middlewares necessários antes
+export default politicaCORS(conectarMongoDB(handler)); // Export o handler criado passando os middlewares necessários antes
